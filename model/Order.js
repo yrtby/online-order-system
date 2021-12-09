@@ -10,8 +10,8 @@ const OrderSchema = new Schema({
     quantity: {
         type: Number,
         required: true
-    }
-}, { versionKey: false });
+    },
+}, { timestamps: true, versionKey: false });
 
 const Order = mongoose.model("Order",OrderSchema);
 module.exports = Order;
