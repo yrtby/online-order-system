@@ -1,0 +1,16 @@
+{
+  "name": "online-order-system",
+  "version": "1.0.0",
+  "description": "Implement a RESTful API with NodeJS that will allow sellers to list and sell the products.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anılcan Yurtbay",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.1"
+  }
+}
