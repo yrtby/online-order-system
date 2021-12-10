@@ -27,6 +27,10 @@ const UserSchema = new Schema({
         type: String,
         enum: ["admin","seller","user"],
         default: null
+    },
+    enabled: {
+        type: Boolean,
+        default: false
     }
 },{ timestamps: true, versionKey: false });
 
