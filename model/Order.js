@@ -11,6 +11,11 @@ const OrderSchema = new Schema({
         type: Number,
         required: true
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    }
 }, { timestamps: true, versionKey: false });
 
 const Order = mongoose.model("Order", OrderSchema);

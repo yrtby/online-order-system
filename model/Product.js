@@ -14,6 +14,11 @@ const ProductSchema = new Schema({
     quantity: {
         type: Number,
         default: 0
+    },
+    seller: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     }
 },{ versionKey: false });
 

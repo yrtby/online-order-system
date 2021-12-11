@@ -15,8 +15,6 @@ module.exports = async (req, res, next) => {
             });
         }   
 
-        console.log(token)
-
         const decode = jwt.verify(token, ENV_JWT_ACCESS_TOKEN_SECRET);
 
         if(!decode){
@@ -28,7 +26,8 @@ module.exports = async (req, res, next) => {
         const user = await User.findById(decode._id);
         let userArr = {
             "id": user._id,
-            "email": user.email
+            "email": user.email,
+            "role": user.role
         };
         req.user = userArr;
     }catch(error){
