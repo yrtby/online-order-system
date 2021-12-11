@@ -74,17 +74,20 @@ exports.updateProduct = async (req, res) => {
 exports.getProducts = async (req, res) => {
     const user_id = req.user.id;
     const user_role = req.user.role;
+    const available = req.query.available;
+    const description = req.query.description;
+    const name = req.query.name;
     let filter = {};
 
-    if(user_role == "seller"){
-        filter.seller = user_id;
-    }
+    available ? filter.quantity = { "$gte": 1 } : null;
+    description ? filter.description = new RegExp(`^${description}`,'i') : null;
+    name ? filter.name = new RegExp(`^${name}`,'i') : null;
+    user_role == "seller" ? filter.seller = user_id : null;
 
     const products = await Product.find(filter).populate('seller', '-_id business_name');
 
     return res.status(200).json({
         status: "success",
         data: products
-    })
-
+    });
 }
