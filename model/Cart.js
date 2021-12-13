@@ -2,12 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const CartSchema = new Schema({
-    product_id: {
+    user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
+        ref: 'User',
         required: true
-    }
-}, { versionKey: false });
+    },
+    cart: [{
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Product",
+            required: true
+        },
+        quantity: {
+            type: Number,
+            required: true
+        }
+    }]
+}, { timestamps: true, versionKey: false });
 
-const Cart = mongoose.model("Cart", CardSchema);
+const Cart = mongoose.model("Cart", CartSchema);
 module.exports = Cart;

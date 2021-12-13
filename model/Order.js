@@ -2,19 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema({
-    product_id: {
+    cart: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
+        ref: "Cart",
         required: true
     },
-    quantity: {
-        type: Number,
-        required: true
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+    status: {
+        type: String,
+        enum: ["created","accepted","cancelled","rejected","delivered"],
+        default: "created"
     }
 }, { timestamps: true, versionKey: false });
 
